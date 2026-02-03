@@ -1,9 +1,0 @@
-ninja
-ftfy
-regex
-tqdm
-gdown
-kornia
-matplotlib
-Pillow
-git+https://github.com/openai/CLIP.git

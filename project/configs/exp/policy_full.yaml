@@ -1,2 +1,0 @@
-train:
-  unfreeze_layers_policy: "full"
