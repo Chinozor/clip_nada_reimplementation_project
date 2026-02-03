@@ -11,11 +11,11 @@ def load_stylegan2_generators(
     if device is None:
         device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    # чтобы "from model import Generator" работал
+
     if stylegan2_repo_dir not in sys.path:
         sys.path.insert(0, stylegan2_repo_dir)
 
-    from model import Generator  # из rosinality/stylegan2-pytorch
+    from model import Generator
 
     torch.manual_seed(42)
 
@@ -30,5 +30,6 @@ def load_stylegan2_generators(
     generator_t.train()
     for p in generator_t.parameters():
         p.requires_grad_(True)
+
 
     return generator_s, generator_t, device
