@@ -11,8 +11,8 @@ def ensure_dir(path: str):
     os.makedirs(path, exist_ok=True)
 
 def tensor_to_pil(img):
-    img = (img.clamp(-1, 1) + 1) / 2.0  # [1, 3, H, W] -> [0, 1]
-    img = img.squeeze(0).detach().cpu()  # [3, H, W]
+    img = (img.clamp(-1, 1) + 1) / 2.0
+    img = img.squeeze(0).detach().cpu()
     return transforms.ToPILImage()(img)
 
 def show_img(img):
@@ -41,4 +41,5 @@ def save_checkpoint(path: str, step: int, generator_t, optimizer, extra: Optiona
     }
     if extra:
         payload["extra"] = extra
+
     torch.save(payload, path)
