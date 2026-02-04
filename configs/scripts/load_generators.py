@@ -13,7 +13,7 @@ def load_stylegan2_generators(
     if stylegan2_repo_dir not in sys.path:
         sys.path.insert(0, stylegan2_repo_dir)
 
-    from stylegan2_pytorch.model import Generator
+    from third_party.stylegan2_pytorch.model import Generator
 
     generator_s = Generator(size=1024, style_dim=latent_dim, n_mlp=8).to(device)
     state_dict = torch.load(ckpt_path, map_location=device)
@@ -29,4 +29,5 @@ def load_stylegan2_generators(
 
 
     return generator_s, generator_t, device
+
 
