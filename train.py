@@ -102,6 +102,7 @@ def main():
         f"steps{tr['steps']}_bs{tr['batch_size']}_topk{tr['top_k']}_"
         f"sel{int(to_bool(tr['use_layer_selection']))}_pol{tr['unfreeze_layers_policy']}_seed{seed}"
     )
+    run_name = f"{domain_name}__{run_name}"
 
     out_root = cfg["paths"]["outputs_root"]
     out_dir = os.path.join(out_root, domain_name, run_name)
@@ -137,4 +138,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
