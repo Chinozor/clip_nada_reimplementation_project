@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-def find_top_k_layers(model, top_k, g_loss, num_e = 1):
+def find_top_k_layers(model, top_k, g_loss, num_e = 5):
 
     top_k = min(top_k, model.n_latent - 1)
 
@@ -14,7 +14,7 @@ def find_top_k_layers(model, top_k, g_loss, num_e = 1):
 
     w_plus_0 = w.unsqueeze(1).repeat(1, model.n_latent, 1)
     w_plus = torch.nn.Parameter(w_plus_0.clone())
-    opt = optim.Adam([w_plus], lr=0.25)
+    opt = optim.Adam([w_plus], lr=0.1)
 
     for _ in range(num_e):
         opt.zero_grad()
@@ -55,4 +55,5 @@ def unfreeze_full_block(model, top_k_layers):
 @torch.no_grad()
 def freeze_all_layers(model):
     for p in model.parameters():
+
         p.requires_grad_(False)
