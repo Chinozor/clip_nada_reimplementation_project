@@ -11,7 +11,7 @@ prompts:
   global: "configs/prompts/tgt_anime_face.yaml"
 
 train:
-  steps: 500
+  steps: 700
   batch_size: 32
   z_dim: 512
   reselection_every: 1
@@ -21,4 +21,4 @@ train:
 
 logging:
   preview_every: 100
-  ckpt_every: 200
+  ckpt_every: 300
